@@ -32,3 +32,6 @@ Web server that exposes an API to translate a text
 5. Translated text is cached to reduce response time of repeated api hits.
 6. For similar languages a list of related languages is stored in a form of 2D array.
 7. By comparing the response time of the api on cache hits and cache miss, evaluation can be done.
+
+# Evalulation
+    With the images added in the responseImages folder one can easily depect the smooth functioning of the API, When the language choosen was hindi there was a cache miss giving the response time to be 2.88 seconds, but because of smart caching Tamil being under the similar category of Hindi was added in cache and when tamil was choosen as the language, the response time came out to be 6ms only and since french is not under the similar category of hindi, it is not added in cache and hence sticking to the response time of 2.6 seconds
