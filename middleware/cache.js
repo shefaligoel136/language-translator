@@ -3,7 +3,6 @@ const redis = require("redis");
 
 const client = redis.createClient(REDIS_PORT);
 
-// Codes for the representation of names of languages
 const ISO6391 = require("iso-639-1");
 
 module.exports.cache = function (request, response, next) {

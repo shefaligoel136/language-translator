@@ -8,9 +8,8 @@ const client = redis.createClient(REDIS_PORT);
 const ISO6391 = require("iso-639-1");
 
 const similarLanguagesList = [
-  ["hi", "kn", "bn", "gu", "pa", "ta", "te"],
-  ["en", "cy"],
-  ["fr", "de", "it", "es", "nl"],
+  ["hi", "kn", "ta", "te", "bn", "gu", "pa"],
+  ["en", "fr", "it"],
 ];
 
 // cache function to create a cache for similar languages
@@ -27,7 +26,7 @@ function smartCache(languageCode, text) {
 
     for (let j = 0; j < similarLanguagesList[i].length; j++) {
       if (j != index) {
-        console.log("similar language",similarLanguagesList[i][j]);
+        console.log("similar language", similarLanguagesList[i][j]);
         translate(text, { to: similarLanguagesList[i][j] })
           .then((response) => {
             // console.log(response.text);
@@ -54,7 +53,7 @@ module.exports.translateText = function (req, res) {
 
   translate(req.body.text, { to: languageCode })
     .then((response) => {
-    //   console.log(response.text);
+      //   console.log(response.text);
 
       // Set data to Redis (enter data in cache)
       let key = req.body.text + "-" + languageCode;
